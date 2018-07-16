@@ -1,10 +1,10 @@
-import { BookModule } from './book.module';
+import { BooksModule } from './book.module';
 
 describe('BookModule', () => {
-  let bookModule: BookModule;
+  let bookModule: BooksModule;
 
   beforeEach(() => {
-    bookModule = new BookModule();
+    bookModule = new BooksModule();
   });
 
   it('should create an instance', () => {

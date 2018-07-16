@@ -1,0 +1,5 @@
+<app-book-card
+  [book]="book"
+  (rate)="sortCollection($event)"
+  *ngFor="let book of books"
+></app-book-card>

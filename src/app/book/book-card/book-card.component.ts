@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../models/book';
 
 @Component({
@@ -9,12 +9,16 @@ import { Book } from '../models/book';
 export class BookCardComponent {
   // <app-book-card [book]="someData"></app-book-data>
   @Input() book: Book;
+  // <app-book-card [book]="someData" (rate)="sortCollection($event)"></app-book-data>
+  @Output() rate = new EventEmitter<Book>();
 
   rateUp() {
     this.book.rating++;
+    this.rate.emit(this.book);
   }
 
   rateDown() {
     this.book.rating--;
+    this.rate.emit(this.book);
   }
 }
