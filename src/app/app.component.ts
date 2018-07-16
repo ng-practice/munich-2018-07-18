@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Book } from './book/models/book';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  myFavoriteBook = new Book(
+    '120398235',
+    'Hello Munich',
+    'stellenanzeigen.de',
+    'https://',
+    'Lorem Ipsum',
+    ['Dr. Author', 'Someone Else']
+  );
 }
