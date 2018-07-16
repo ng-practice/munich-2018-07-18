@@ -1,2 +1,31 @@
-<h4>{{ book.title }} <small>{{ book.subtitle }} </small></h4>
+<!-- https://vmware.github.io/clarity/documentation/v0.12/cards -->
 
+<div class="row">
+  <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        {{ book.title }}
+        (Rating: {{ book.rating }})
+      </div>
+      <div class="card-block">
+        <div class="card-title">
+          {{ book.isbn }}
+        </div>
+        <div class="card-text">
+          {{ book.description }}
+        </div>
+        <div class="card-text">
+          {{ book.authors }}
+        </div>
+      </div>
+      <div class="card-footer">
+        <button
+          (click)="rateUp()"
+          class="btn btn-sm btn-link">VOTE UP</button>
+        <button
+          (click)="rateDown()"
+          class="btn btn-sm btn-link">VOTE DOWN</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Book } from '../models/book';
 
 @Component({
@@ -6,13 +6,15 @@ import { Book } from '../models/book';
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.css']
 })
-export class BookCardComponent implements OnInit {
+export class BookCardComponent {
   // <app-book-card [book]="someData"></app-book-data>
   @Input() book: Book;
 
-  constructor() { }
-
-  ngOnInit() {
+  rateUp() {
+    this.book.rating++;
   }
 
+  rateDown() {
+    this.book.rating--;
+  }
 }
