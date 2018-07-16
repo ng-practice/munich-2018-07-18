@@ -5,7 +5,10 @@
     <div class="card">
       <div class="card-header">
         {{ book.title }}
-        (Rating: {{ book.rating }})
+        <!-- <ng-container *ngIf="book.rating !== 0">
+          (Rating: {{ book.rating }})
+        </ng-container> -->
+        <span [hidden]="book.rating === 0">Rating: {{ book.rating }}</span>
       </div>
       <div class="card-block">
         <div class="card-title">
