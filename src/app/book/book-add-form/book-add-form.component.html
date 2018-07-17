@@ -3,23 +3,43 @@
 <form class="form">
   <div class="form-group">
     <label>ISBN</label>
-    <input type="text" #isbn>
+    <input
+      [(ngModel)]="book.isbn"
+      name="isbn"
+      type="text"
+      #isbn>
   </div>
   <div class="form-group">
     <label>TITLE</label>
-    <input type="text" #title>
+    <input
+      [(ngModel)]="book.title"
+      name="title"
+      type="text"
+      #title>
   </div>
   <div class="form-group">
     <label>SUBTITLE</label>
-    <input type="text" #subtitle>
+   <input
+      [(ngModel)]="book.subtitle"
+      name="subtitle"
+      type="text"
+      #subtitle>
   </div>
   <div class="form-group">
     <label>RATING</label>
-    <input type="number" #rating>
+    <input
+      [(ngModel)]="book.rating"
+      name="rating"
+      type="number"
+      #rating>
   </div>
   <div class="form-group">
     <label>DESCRIPTION</label>
-    <textarea #description></textarea>
+    <textarea
+      [(ngModel)]="book.description"
+      name="description"
+      #description
+      ></textarea>
   </div>
   <button (click)="raiseBookCreation(isbn, title, subtitle, rating, description)" class="btn btn-primary" type="button">
     Create Book

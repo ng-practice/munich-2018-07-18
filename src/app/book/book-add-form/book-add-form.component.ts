@@ -9,23 +9,9 @@ import { Book } from '../models/book';
 export class BookAddFormComponent {
   @Output() create = new EventEmitter<Book>();
 
-  raiseBookCreation(
-    isbn: HTMLInputElement,
-    title: HTMLInputElement,
-    subtitle: HTMLInputElement,
-    rating: HTMLInputElement,
-    description: HTMLTextAreaElement
-  ) {
-    const book = new Book(
-      isbn.value,
-      title.value,
-      subtitle.value,
-      '',
-      description.value,
-      [],
-      +rating.value
-    );
+  book = new Book('', '', '', '', '');
 
-    this.create.emit(book);
+  raiseBookCreation() {
+    this.create.emit({...this.book});
   }
 }
