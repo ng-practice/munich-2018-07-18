@@ -18,9 +18,13 @@
     <label>TITLE</label>
     <input
       [(ngModel)]="book.title"
+      minlength="3"
       name="title"
       type="text"
-      #title>
+      #title="ngModel">
+    <small *ngIf="title.dirty && title.hasError('minlength')">
+      Your title needs to have at least three characters.
+    </small>
   </div>
   <div class="form-group">
     <label>SUBTITLE</label>
