@@ -4,7 +4,7 @@
 </div>
 
 
-<ng-container *ngIf="isCardView; else inlineView">
+<ng-container *ngIf="isCardView; else compactView">
   <app-book-card
     [book]="book"
     (rate)="sortCollection($event)"
@@ -12,7 +12,7 @@
   ></app-book-card>
 </ng-container>
 
-<ng-template #inlineView>
+<ng-template #compactView>
   <app-book-compact
     [book]="book"
     (rate)="sortCollection($event)"
