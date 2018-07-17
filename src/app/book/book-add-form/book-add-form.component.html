@@ -30,9 +30,13 @@
     <label>SUBTITLE</label>
    <input
       [(ngModel)]="book.subtitle"
+      pattern="[a-zA-Z ]*"
       name="subtitle"
       type="text"
-      #subtitle>
+      #subtitle="ngModel">
+  <small *ngIf="subtitle.dirty && subtitle.hasError('pattern')">
+    The subtitle must only contain characters.
+  </small>
   </div>
   <div class="form-group">
     <label>RATING</label>
