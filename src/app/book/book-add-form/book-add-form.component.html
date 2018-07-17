@@ -1,0 +1,27 @@
+<!-- form>(.form-group>input[type=text])*3+button.btn[type=button] -->
+<h2>Create New Book</h2>
+<form class="form">
+  <div class="form-group">
+    <label>ISBN</label>
+    <input type="text" #isbn>
+  </div>
+  <div class="form-group">
+    <label>TITLE</label>
+    <input type="text" #title>
+  </div>
+  <div class="form-group">
+    <label>SUBTITLE</label>
+    <input type="text" #subtitle>
+  </div>
+  <div class="form-group">
+    <label>RATING</label>
+    <input type="number" #rating>
+  </div>
+  <div class="form-group">
+    <label>DESCRIPTION</label>
+    <textarea #description></textarea>
+  </div>
+  <button (click)="raiseBookCreation(isbn, title, subtitle, rating, description)" class="btn btn-primary" type="button">
+    Create Book
+  </button>
+</form>

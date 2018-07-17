@@ -1,3 +1,8 @@
+<app-book-add-form (create)="appendBook($event)"></app-book-add-form>
+
+
+<hr>
+
 <div class="btn-group btn-primary">
   <button (click)="showCardView(true)" class="btn">Card</button>
   <button (click)="showCardView(false)" class="btn">Inline</button>
@@ -5,17 +10,9 @@
 
 
 <ng-container *ngIf="isCardView; else compactView">
-  <app-book-card
-    [book]="book"
-    (rate)="sortCollection($event)"
-    *ngFor="let book of books"
-  ></app-book-card>
+  <app-book-card [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></app-book-card>
 </ng-container>
 
 <ng-template #compactView>
-  <app-book-compact
-    [book]="book"
-    (rate)="sortCollection($event)"
-    *ngFor="let book of books"
-  ></app-book-compact>
+  <app-book-compact [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></app-book-compact>
 </ng-template>

@@ -37,6 +37,10 @@ export class BooksComponent {
     )
   ];
 
+  appendBook(book: Book) {
+    this.books.push(book);
+  }
+
   sortCollection(book: Book) {
     // console.warn(book);
     this.books.sort((current, next) => next.rating - current.rating);
