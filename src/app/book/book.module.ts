@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -7,15 +8,17 @@ import { BookAddFormComponent } from './book-add-form/book-add-form.component';
 import { BookCardComponent } from './book-card/book-card.component';
 import { BookCompactComponent } from './book-compact/book-compact.component';
 import { BooksComponent } from './books.component';
+import { BookService } from './lib/book.service';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, UtilitiesModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, UtilitiesModule],
   declarations: [
     BooksComponent,
     BookCardComponent,
     BookCompactComponent,
     BookAddFormComponent
   ],
-  exports: [BooksComponent]
+  exports: [BooksComponent],
+  providers: [BookService]
 })
 export class BooksModule {}
