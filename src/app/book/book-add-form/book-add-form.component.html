@@ -1,13 +1,18 @@
 <!-- form>(.form-group>input[type=text])*3+button.btn[type=button] -->
 <h2>Create New Book</h2>
-<form class="form">
+<form  #bookForm="ngForm" class="form">
   <div class="form-group">
     <label>ISBN</label>
     <input
       [(ngModel)]="book.isbn"
+      required
+      placeholder="e.g. 0238912903"
       name="isbn"
       type="text"
-      #isbn>
+      #isbn="ngModel">
+      <small *ngIf="isbn.dirty && isbn.hasError('required')">
+        Please insert a valid ISBN number.
+      </small>
   </div>
   <div class="form-group">
     <label>TITLE</label>
@@ -41,7 +46,10 @@
       #description
       ></textarea>
   </div>
-  <button (click)="raiseBookCreation(isbn, title, subtitle, rating, description)" class="btn btn-primary" type="button">
+  <button
+    [disabled]="bookForm.invalid"
+    (click)="raiseBookCreation()"
+    class="btn btn-primary" type="button">
     Create Book
   </button>
 </form>
