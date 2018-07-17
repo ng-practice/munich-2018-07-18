@@ -1,3 +1,6 @@
 {{ book.title }} - {{ book.rating }}
-<button (click)="rateUp()">+</button>
-<button (click)="rateDown()">-</button>
+
+<div class="btn-group">
+  <button (click)="rateUp()" class="btn">+</button>
+  <button (click)="rateDown()" class="btn">-</button>
+</div>
