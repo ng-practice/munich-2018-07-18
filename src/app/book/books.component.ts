@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Book } from './models/book';
 
 @Component({
-  selector: 'app-books',
+  selector: 'sde-books',
   templateUrl: './books.component.html',
 styleUrls: ['./books.component.css']
 })

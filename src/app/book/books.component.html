@@ -1,4 +1,4 @@
-<app-book-add-form (create)="appendBook($event)"></app-book-add-form>
+<sde-book-add-form (create)="appendBook($event)"></sde-book-add-form>
 
 
 <hr>
@@ -10,9 +10,9 @@
 
 
 <ng-container *ngIf="isCardView; else compactView">
-  <app-book-card [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></app-book-card>
+  <sde-book-card [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></sde-book-card>
 </ng-container>
 
 <ng-template #compactView>
-  <app-book-compact [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></app-book-compact>
+  <sde-book-compact [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></sde-book-compact>
 </ng-template>
