@@ -1,5 +1,21 @@
-<app-book-card
-  [book]="book"
-  (rate)="sortCollection($event)"
-  *ngFor="let book of books"
-></app-book-card>
+<div class="btn-group btn-primary">
+  <button (click)="showCardView(true)" class="btn">Card</button>
+  <button (click)="showCardView(false)" class="btn">Inline</button>
+</div>
+
+
+<ng-container *ngIf="isCardView; else inlineView">
+  <app-book-card
+    [book]="book"
+    (rate)="sortCollection($event)"
+    *ngFor="let book of books"
+  ></app-book-card>
+</ng-container>
+
+<ng-template #inlineView>
+  <app-book-compact
+    [book]="book"
+    (rate)="sortCollection($event)"
+    *ngFor="let book of books"
+  ></app-book-compact>
+</ng-template>

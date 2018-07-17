@@ -8,6 +8,8 @@ import { Book } from './models/book';
 styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
+  isCardView = true;
+
   books = [
     new Book(
       '120398235',
@@ -38,5 +40,9 @@ export class BooksComponent {
   sortCollection(book: Book) {
     // console.warn(book);
     this.books.sort((current, next) => next.rating - current.rating);
+  }
+
+  showCardView(shouldShow: boolean) {
+    this.isCardView = shouldShow;
   }
 }
