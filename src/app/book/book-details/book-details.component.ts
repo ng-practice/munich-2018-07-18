@@ -13,13 +13,12 @@ import { Book } from '../models/book';
 export class BookDetailsComponent implements OnInit {
   book: Book = {} as Book;
 
-  constructor(private route: ActivatedRoute, private books: BookService) { }
+  constructor(private route: ActivatedRoute, private books: BookService) {}
 
   ngOnInit() {
     // this.route.params.subscribe(params => params.isbn)
-    this.route.params.pipe(
-      switchMap(params => this.books.getByIsbn(params.isbn))
-    ).subscribe(book => this.book = book);
+    this.route.params
+      .pipe(switchMap(params => this.books.getByIsbn(params.isbn)))
+      .subscribe(book => (this.book = book));
   }
-
 }
