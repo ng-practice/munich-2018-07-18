@@ -4,15 +4,19 @@ import { Observable } from 'rxjs';
 
 import { Book } from '../models/book';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  endpoint = 'http://localhost:3000/books';
-
   constructor(private http: HttpClient) {}
 
   all(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.endpoint);
+    return this.http.get<Book[]>(environment.booksApi);
+  }
+
+  create(book: Book): Observable<void> {
+    return this.http.post<void>(environment.booksApi, book);
   }
 }

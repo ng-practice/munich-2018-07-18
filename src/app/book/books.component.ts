@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 
-import { Book } from './models/book';
 import { BookService } from './lib/book.service';
+import { Book } from './models/book';
 
 @Component({
   selector: 'sde-books',
   templateUrl: './books.component.html',
-styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];
@@ -15,15 +16,17 @@ export class BooksComponent implements OnInit {
   constructor(private booksService: BookService) {}
 
   ngOnInit(): void {
-    this.booksService.all().subscribe(books => this.books = books);
+    this.booksService.all().subscribe(books => (this.books = books));
   }
 
   appendBook(book: Book) {
-    this.books.push(book);
+    this.booksService
+      .create(book)
+      .pipe(switchMap(() => this.booksService.all()))
+      .subscribe(books => (this.books = books));
   }
 
   sortCollection(book: Book) {
-    // console.warn(book);
     this.books.sort((current, next) => next.rating - current.rating);
   }
 

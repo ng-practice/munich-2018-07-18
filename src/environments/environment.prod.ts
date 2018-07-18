@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  booksApi: 'https://localhost:3000/books'
 };
