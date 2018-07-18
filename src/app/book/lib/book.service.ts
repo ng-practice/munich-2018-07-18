@@ -22,4 +22,11 @@ export class BookService {
   create(book: Book): Observable<void> {
     return this.http.post<void>(environment.booksApi, book);
   }
+
+  update(book: Book): Observable<void> {
+    return this.http.put<void>(
+      `${environment.booksApi}/update/${book.isbn}`,
+      book
+    );
+  }
 }

@@ -1,14 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+import { FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { switchMap, takeUntil } from '../../../../node_modules/rxjs/operators';
+import { Observable } from '../../../../node_modules/rxjs';
+import { switchMap, tap } from '../../../../node_modules/rxjs/operators';
 import { BookService } from '../lib/book.service';
 import { Book } from '../models/book';
-import {
-  Subscription,
-  Subject,
-  Observable
-} from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'sde-book-details',
@@ -16,19 +13,44 @@ import {
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
-  // book: Book = {} as Book;
   now = new Date();
+  book: Book;
   book$: Observable<Book>;
+
+  editForm: FormGroup;
 
   // paramSubscription: Subscription;
   // destroy$$ = new Subject();
 
-  constructor(private route: ActivatedRoute, private books: BookService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private books: BookService
+  ) {
+    this.editForm = this.fb.group({
+      title: ['', [Validators.required]],
+      subtitle: ['', [Validators.minLength(2)]]
+    });
+  }
+
+  private fillForm(book: Book): void {
+    this.editForm.patchValue({
+      title: book.title,
+      subtitle: book.subtitle
+    });
+  }
+
+  updateBook() {
+    const patchedBook = {...this.book, ...this.editForm.value};
+    this.books.update(patchedBook).subscribe();
+  }
 
   ngOnInit() {
     this.book$ = this.route.params.pipe(
       // takeUntil(this.destroy$$),
-      switchMap(params => this.books.getByIsbn(params.isbn))
+      switchMap(params => this.books.getByIsbn(params.isbn)),
+      tap(book => this.fillForm(book)),
+      tap(book => this.book = book)
     );
     // .subscribe(
     //   // next

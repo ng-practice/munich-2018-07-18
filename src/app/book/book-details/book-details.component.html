@@ -5,3 +5,32 @@
 </ng-container>
 
 {{ now | date:'dd.MM.yyyy' }}
+
+<hr>
+
+<h2>Edit Form</h2>
+
+<form [formGroup]="editForm" (ngSubmit)="updateBook()">
+  <!-- (.form-control>input)*2 -->
+
+  <div class="form-control">
+    <label>TITLE</label>
+    <input
+      formControlName="title"
+      type="text">
+    <small *ngIf="
+      editForm.controls.title.dirty &&
+      editForm.controls.title.hasError('required')">
+      Please insert a title.
+    </small>
+  </div>
+  <div class="form-control">
+    <label>SUBTITLE</label>
+    <input
+      formControlName="subtitle"
+      type="text">
+  </div>
+  <button type="submit" class="btn btn-primary">Update book</button>
+</form>
+
+{{ editForm.value | json  }}
