@@ -17,6 +17,7 @@ import {
 })
 export class BookDetailsComponent implements OnInit {
   // book: Book = {} as Book;
+  now = new Date();
   book$: Observable<Book>;
 
   // paramSubscription: Subscription;
