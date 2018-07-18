@@ -11,6 +11,7 @@ import { BooksComponent } from './books.component';
 import { BookService } from './lib/book.service';
 import { BooksRoutingModule } from './books-routing.module';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     BookCardComponent,
     BookCompactComponent,
     BookAddFormComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    SearchPipe
   ],
   exports: [BooksComponent],
   providers: [BookService]

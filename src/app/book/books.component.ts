@@ -10,6 +10,7 @@ import { Book } from './models/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
+  query: string;
   books: Book[] = [];
   isCardView = true;
 
@@ -17,6 +18,10 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void {
     this.booksService.all().subscribe(books => (this.books = books));
+  }
+
+  updateQuery(search: { target: { value: string } }) {
+    this.query = search.target.value;
   }
 
   appendBook(book: Book) {

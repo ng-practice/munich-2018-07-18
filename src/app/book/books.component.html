@@ -7,10 +7,22 @@
 </div>
 
 
+<input
+  type="text"
+  placeholder="Search for a book..."
+  (input)="updateQuery($event)">
+
 <ng-container *ngIf="isCardView; else compactView">
-  <sde-book-card [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></sde-book-card>
+  <sde-book-card
+    [book]="book"
+    (rate)="sortCollection($event)"
+    *ngFor="let book of books | search:query">
+  </sde-book-card>
 </ng-container>
 
 <ng-template #compactView>
-  <sde-book-compact [book]="book" (rate)="sortCollection($event)" *ngFor="let book of books"></sde-book-compact>
+  <sde-book-compact
+    [book]="book"
+    (rate)="sortCollection($event)"
+    *ngFor="let book of books | search:query"></sde-book-compact>
 </ng-template>
