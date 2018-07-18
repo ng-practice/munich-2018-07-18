@@ -10,6 +10,7 @@ import { BookCompactComponent } from './book-compact/book-compact.component';
 import { BooksComponent } from './books.component';
 import { BookService } from './lib/book.service';
 import { BooksRoutingModule } from './books-routing.module';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { BooksRoutingModule } from './books-routing.module';
     BooksComponent,
     BookCardComponent,
     BookCompactComponent,
-    BookAddFormComponent
+    BookAddFormComponent,
+    BookDetailsComponent
   ],
   exports: [BooksComponent],
   providers: [BookService]

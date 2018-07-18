@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Book } from '../models/book';
 
 import { environment } from '../../../environments/environment';
+import { retry } from '../../../../node_modules/rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class BookService {
 
   all(): Observable<Book[]> {
     return this.http.get<Book[]>(environment.booksApi);
+  }
+
+  getByIsbn(isbn: string): Observable<Book> {
+    return this.http.get<Book>(`${environment.booksApi}/${isbn}`);
   }
 
   create(book: Book): Observable<void> {
